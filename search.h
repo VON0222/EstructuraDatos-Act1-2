@@ -24,13 +24,16 @@
 //		   is not found in the vector.
 // =================================================================
 template <class T>
-int sequentialSearch(const std::vector<T> &v, T key) {
+std::vector<int> sequentialSearch(const std::vector<T> &v, T key) {
+	int num;
+	num = 0;
 	for (int i = 0; i < v.size(); i++) {
+		num++;
 		if (v[i] == key) {
-			return i;
+			return std::vector<int>{i, num};
 		}
 	}
-	return -1;
+	return std::vector<int>{-1, num};
 }
 
 // =================================================================
@@ -42,22 +45,23 @@ int sequentialSearch(const std::vector<T> &v, T key) {
 //		   is not found in the vector.
 // =================================================================
 template <class T>
-int binarySearch(const std::vector<T> &v, T key) {
-	int low, high, mid;
-
+std::vector<int> binarySearch(const std::vector<T> &v, T key) {
+	int low, high, mid, num;
+	num = 0;
 	low = 0;
 	high = v.size() - 1;
 	while (low <= high) {
+		num++;
 		mid = low + ((high - low) / 2); // mid = (high + low) / 2;
 		if (key == v[mid]) {
-			return mid;
+			return std::vector<int>{mid, num};
 		} else if (key < v[mid]) {
 			high = mid - 1;
 		} else {
 			low = mid + 1;
 		}
 	}
-	return -1;
+	return std::vector<int>{-1, num};
 }
 
 // =================================================================
@@ -71,15 +75,15 @@ int binarySearch(const std::vector<T> &v, T key) {
 //		   is not found in the vector.
 // =================================================================
 template <class T>
-int binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
-	int mid;
-
+std::vector<int> binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
+	int mid, num;
+	num = 0;
 	if (low > high) {
-		return -1;
+		return std::vector<int>{-1, num};
 	} else {
 		mid = low + ((high - low) / 2); // mid = (high + low) / 2;
 		if (key == v[mid]) {
-			return mid;
+			return std::vector<int>{mid, num};
 		} else if (key < v[mid]) {
 			return binaryRSearch(v, low, mid - 1, key);
 		} else {

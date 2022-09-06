@@ -1,6 +1,6 @@
 // =================================================================
 //
-// File: bubble.h
+// File: bubble.h 
 // Author: Pedro Perez
 // Description: This file contains the implementation of the
 //				bubble sort.
@@ -22,14 +22,18 @@
 // @param size, the number of elements in the array.
 // =================================================================
 template <class T>
-void bubbleSort(T *arr, int size) {
+int bubbleSort(T *arr, int size) {
+	int num;
+	num = 0;
 	for(int i = size - 1; i > 0; i--){
 		for(int j = 0; j < i; j++){
 			if(arr[j] > arr[j + 1]){
+				num++;
 				swap(arr, j, j + 1);
 			}
 		}
 	}
+	return num;
 }
 
 // =================================================================
@@ -38,14 +42,18 @@ void bubbleSort(T *arr, int size) {
 // @param v, a vector of T elements.
 // =================================================================
 template <class T>
-void bubbleSort(std::vector<T> &v) {
+int bubbleSort(std::vector<T> &v) {
+	int num;
+	num = 0;
 	for(int i = v.size() - 1; i > 0; i--){
 		for(int j = 0; j < i; j++){
 			if(v[j] > v[j + 1]){
+				num++;
 				swap(v, j, j + 1);
 			}
 		}
 	}
+	return num;
 }
 
 #endif /* BUBBLE_H */

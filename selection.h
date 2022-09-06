@@ -3,7 +3,7 @@
 // File: selection.h
 // Author: Pedro Perez
 // Description: This file contains the implementation of the
-//				bubble sort.
+//				selection sort.
 //
 // Copyright (c) 2020 by Tecnologico de Monterrey.
 // All Rights Reserved. May be reproduced for any non-commercial
@@ -22,9 +22,9 @@
 // @param size, the number of elements in the array.
 // =================================================================
 template <class T>
-void selectionSort(T *arr, int size) {
-	int pos;
-
+int selectionSort(T *arr, int size) {
+	int pos, num;
+	num = 0;
 	for(int i = size - 1; i > 0; i--){
 		pos = 0;
 		for(int j = 1; j <= i; j++){
@@ -34,9 +34,11 @@ void selectionSort(T *arr, int size) {
 		}
 
 		if (pos != i){
+			num++;
 			swap(arr, i, pos);
 		}
 	}
+	return num;
 }
 
 // =================================================================
@@ -45,9 +47,9 @@ void selectionSort(T *arr, int size) {
 // @param A, a vector of T elements.
 // =================================================================
 template <class T>
-void selectionSort(std::vector<T> &v) {
-	int pos;
-
+int selectionSort(std::vector<T> &v) {
+	int pos, num;
+	num = 0;
 	for(int i = v.size() - 1; i > 0; i--){
 		pos = 0;
 		for(int j = 1; j <= i; j++){
@@ -57,9 +59,11 @@ void selectionSort(std::vector<T> &v) {
 		}
 
 		if (pos != i){
+			num++;
 			swap(v, i, pos);
 		}
 	}
+	return num;
 }
 
 #endif /* SELECTION_H */
